@@ -20,7 +20,7 @@ export const siteConfig: SiteConfig = {
   mainNav: [],
   links: {
     twitter: "https://twitter.com/akshay5995",
-    github: "https://github.com/akshay5995/chat-blog",
+    github: "https://github.com/akshay5995/feed-chat",
     docs: "https://ui.shadcn.com",
   },
   beta: true,

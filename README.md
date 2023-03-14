@@ -8,7 +8,7 @@ Powered by Langchain (https://github.com/hwchase17/langchainjs) and OpenAI (http
 
 ## Demo
 
-[https://chat.rocketeer.dev/)](https://chat.rocketeer.dev/)
+[https://chat.rocketeer.dev/](https://chat.rocketeer.dev/)
 
 ### Get started
 
@@ -16,7 +16,7 @@ Add the following env variables to your `.env` file:
 
 ```sh
 RSS_DOMAIN=yourdomain.com
-RSS_PATH=/feed.xml
+RSS_PATH=rss.xml # without leading slash
 OPENAI_API_KEY=your-open-ai-api-key
 OPENAI_MAX_TOKENS=number-of-tokens
 # Optional
