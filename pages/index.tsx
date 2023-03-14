@@ -189,7 +189,7 @@ export default function IndexPage({
                 href={result[blogId].link}
                 target="_blank"
                 rel="noreferrer"
-                className="align-center flex justify-center"
+                className="flex justify-center align-middle"
               >
                 <Icons.externalLink className="h-6 w-6" />
               </a>
