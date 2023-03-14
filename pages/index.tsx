@@ -74,10 +74,12 @@ export default function IndexPage({
 
   const handleBlogChange = (data: FeedEntry) => {
     setBlog(data.id)
+    setChatMessages([])
   }
 
   const selectBlog = (id: string) => {
     setBlog(id)
+    setChatMessages([])
   }
 
   const handleSendMessage = async () => {
