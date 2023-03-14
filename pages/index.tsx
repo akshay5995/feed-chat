@@ -2,11 +2,12 @@ import { useState } from "react"
 import { InferGetServerSidePropsType } from "next"
 import Head from "next/head"
 import logger from "@/logger"
-import { extract } from "@extractus/feed-extractor"
+import { FeedEntry, extract } from "@extractus/feed-extractor"
 
 import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
 import { Layout } from "@/components/layout"
+import { SideBar } from "@/components/side-bar"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import {
@@ -32,7 +33,7 @@ export async function getServerSideProps(context) {
     const resultMap = result.entries.reduce((acc, entry) => {
       acc[entry.id] = entry
       return acc
-    }, {})
+    }, {}) as Record<string, FeedEntry>
 
     return {
       props: {
@@ -67,12 +68,12 @@ export default function IndexPage({
   const [chatMessages, setChatMessages] = useState(messages)
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleBlogChange = (id: string) => {
-    setBlog(id)
+  const handleBlogChange = (data: FeedEntry) => {
+    setBlog(data.id)
     setChatMessages([
       {
         sender: "bot",
-        body: `Hi! You can chat with me regarding "${result[id].title}"`,
+        body: `Hi! You can chat with me regarding "${data.title}"`,
       },
     ])
   }
@@ -135,20 +136,7 @@ export default function IndexPage({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex h-full w-full  flex-1 flex-row">
-        <div className="flex h-full min-h-[580px] w-full max-w-[300px] flex-col">
-          <div className="flex flex-1 flex-col p-4">
-            {ids.map((id) => (
-              <div className="border-slate 100 flex flex-row py-2">
-                <h1
-                  className="text-l cursor-pointer font-bold hover:text-slate-500"
-                  onClick={() => handleBlogChange(id)}
-                >
-                  {result[id].title}
-                </h1>
-              </div>
-            ))}
-          </div>
-        </div>
+        <SideBar items={Object.values(result)} callback={handleBlogChange} />
         <div className="flex w-full flex-1 flex-col items-start gap-2 px-2 pt-4">
           <div className="flex w-full flex-col items-start gap-2">
             <div className="flex w-full flex-row border-b px-4 pb-2 text-2xl font-bold">

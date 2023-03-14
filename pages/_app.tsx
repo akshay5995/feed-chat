@@ -3,6 +3,7 @@ import { Inter as FontSans } from "@next/font/google"
 import { ThemeProvider } from "next-themes"
 
 import "@/styles/globals.css"
+import { Analytics } from "@/components/analytics"
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <Component {...pageProps} />
       </ThemeProvider>
+      <Analytics />
     </>
   )
 }
