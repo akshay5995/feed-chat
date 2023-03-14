@@ -80,6 +80,7 @@ export default function IndexPage({
 
   const handleSendMessage = async () => {
     setIsLoading(true)
+    setChatMessages((prev) => [...prev, { sender: "user", body: message }])
     setMessage("")
 
     try {
@@ -103,7 +104,7 @@ export default function IndexPage({
       }
 
       if (res.success) {
-        setChatMessages((prev) => [...prev, userMessage, res.reply])
+        setChatMessages((prev) => [...prev, res.reply])
       } else {
         setChatMessages((prev) => [
           ...prev,
