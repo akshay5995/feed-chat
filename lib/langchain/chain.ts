@@ -5,12 +5,14 @@ import { type VectorStore } from "langchain/vectorstores"
 import getModel from "./model"
 import { hnswStore, supabaseVectorStore } from "./stores"
 
+const maxTokens = Number(process.env.OPENAI_MAX_TOKENS) || 100
+
 const chatChainFromUrl = async (
   url: string,
   chatHistory: string[],
   inMemory: boolean
 ) => {
-  const model = getModel(200)
+  const model = getModel(maxTokens)
 
   const loader = new CheerioWebBaseLoader(url)
 
