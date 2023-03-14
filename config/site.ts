@@ -1,29 +1,27 @@
 import { NavItem } from "@/types/nav"
 
-interface SiteConfig {
+export interface SiteConfig {
   name: string
   description: string
   mainNav: NavItem[]
+  author: string
   links: {
     twitter: string
     github: string
     docs: string
   }
+  beta: boolean
 }
 
 export const siteConfig: SiteConfig = {
-  name: "Next.js",
-  description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
-  mainNav: [
-    {
-      title: "Home",
-      href: "/",
-    },
-  ],
+  name: `FeedChat`,
+  description: `A chat interface blog posts.`,
+  author: "Akshay Ram",
+  mainNav: [],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
+    twitter: "https://twitter.com/akshay5995",
+    github: "https://github.com/akshay5995/chat-blog",
     docs: "https://ui.shadcn.com",
   },
+  beta: true,
 }

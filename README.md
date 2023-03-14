@@ -1,78 +1,42 @@
-# next-template
+# Feed Chat (BETA)
+    
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fakshay5995%2Ffeed-chat&env=OPENAI_API_KEY,OPEN_API_MAX_TOKENS,RSS_DOMAIN,RSS_PATH&project-name=feed-chat&repository-name=feed-chat&demo-title=Feed%20Chat&demo-description=Feed%20chat%20allow%20you%20to%20give%20an%20interface%20to%20your%20blog%20users%20to%20ask%20questions%20and%20interact%20with%20your%20blog%20posts%20in%20QA%20style.%20Powered%20by%20Langchain%20and%20OpenAI.&demo-url=https%3A%2F%2Fchat.rocketeer.dev)
 
-A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
+Feed chat allow you to give an interface to your blog users to ask questions and interact with your blog posts in QA style. 
 
-## Features
+Powered by Langchain (https://github.com/hwchase17/langchainjs) and OpenAI (https://openai.com).
 
-- Radix UI Primitives
-- Tailwind CSS
-- Fonts with `@next/font`
-- Icons from [Lucide](https://lucide.dev)
-- Dark mode with `next-themes`
-- Automatic import sorting with `@ianvs/prettier-plugin-sort-imports`
+## Demo
 
-## Tailwind CSS Features
+[https://chat.rocketeer.dev/)](https://chat.rocketeer.dev/)
 
-- Class merging with `taiwind-merge`
-- Animation with `tailwindcss-animate`
-- Conditional classes with `clsx`
-- Variants with `class-variance-authority`
-- Automatic class sorting with `eslint-plugin-tailwindcss`
+### Get started
 
-## Import Sort
+Add the following env variables to your `.env` file:
 
-The starter comes with `@ianvs/prettier-plugin-sort-imports` for automatically sort your imports.
-
-### Input
-
-```tsx
-import * as React from "react"
-import Link from "next/link"
-
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
-import "@/styles/globals.css"
-import { twMerge } from "tailwind-merge"
-
-import { NavItem } from "@/types/nav"
-import { cn } from "@/lib/utils"
+```sh
+RSS_DOMAIN=yourdomain.com
+RSS_PATH=/feed.xml
+OPENAI_API_KEY=your-open-ai-api-key
+OPENAI_MAX_TOKENS=number-of-tokens
+# Optional
+NEXT_SUPABASE_URL=your-supabase-url
+SUPABASE_PRIVATE_KEY=your-supabase-private-key
 ```
 
-### Output
+### Run locally
 
-```tsx
-import * as React from "react"
-// React is always first.
-import Link from "next/link"
-// Followed by next modules.
-import { twMerge } from "tailwind-merge"
-
-// Followed by third-party modules
-// Space
-import "@/styles/globals.css"
-// styles
-import { NavItem } from "@/types/nav"
-// types
-import { siteConfig } from "@/config/site"
-// config
-import { cn } from "@/lib/utils"
-// lib
-import { buttonVariants } from "@/components/ui/button"
-
-// components
+```sh
+yarn dev
 ```
 
-### Class Merging
+### Deploy
 
-The `cn` util handles conditional classes and class merging.
-
-### Input
-
-```ts
-cn("px-2 bg-slate-100 py-2 bg-slate-200")
-// Outputs `p-2 bg-slate-200`
+```sh
+yarn build
+yarn start
 ```
 
-## License
+### Limitations
 
-Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+Current I'm using in memory cache to store the questions and answers. This is not a good solution for production. I'm planning Supabase to store the vectors and questions.
