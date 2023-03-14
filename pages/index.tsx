@@ -207,6 +207,7 @@ export default function IndexPage({
                 className="max-h-[40px] flex-1 resize-none outline-none focus:outline-none"
                 placeholder="Type your message here"
                 value={message}
+                disabled={isLoading}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
@@ -218,6 +219,7 @@ export default function IndexPage({
               <Button
                 className="bg-slate-500 text-white"
                 onClick={handleSendMessage}
+                disabled={isLoading}
               >
                 Send
               </Button>

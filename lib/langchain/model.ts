@@ -9,6 +9,8 @@ const getModel = (maxTokens: number) =>
     frequencyPenalty: 0,
     bestOf: 1,
     n: 1,
+  }, {
+    organization: process.env.OPENAI_ORG || "",
   })
 
 export default getModel
