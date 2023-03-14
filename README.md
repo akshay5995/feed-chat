@@ -24,6 +24,8 @@ RSS_PATH=rss.xml # without leading slash
 OPENAI_API_KEY=your-open-ai-api-key
 OPENAI_MAX_TOKENS=number-of-tokens
 # Optional
+OPENAPI_ORG=your-openapi-org
+# Not yet used (will be used to store the vectors and questions)
 NEXT_SUPABASE_URL=your-supabase-url
 SUPABASE_PRIVATE_KEY=your-supabase-private-key
 ```
