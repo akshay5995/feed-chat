@@ -169,7 +169,10 @@ export default function IndexPage({
             </div>
             <div className="flex w-full flex-1 flex-row gap-2 border-b p-2 font-bold md:hidden">
               <Select value={blogId} onValueChange={selectBlog}>
-                <SelectTrigger className="flex-1 border-none outline-none">
+                <SelectTrigger
+                  className="flex-1 border-none outline-none"
+                  disabled={isLoading}
+                >
                   <SelectValue
                     placeholder="Select a blog"
                     defaultChecked
