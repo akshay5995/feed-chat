@@ -10,6 +10,10 @@ Powered by Langchain (https://github.com/hwchase17/langchainjs) and OpenAI (http
 
 [https://chat.rocketeer.dev/](https://chat.rocketeer.dev/)
 
+### Screenshot
+
+![Screenshot](https://raw.githubusercontent.com/akshay5995/feed-chat/main/docs/screenshot.png)
+
 ### Get started
 
 Add the following env variables to your `.env` file:
