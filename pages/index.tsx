@@ -138,7 +138,7 @@ export default function IndexPage({
         <meta name="description" content={siteConfig.description} />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1 max-scale=1"
+          content="width=device-width, initial-scale=1 maximum-scale=1"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
