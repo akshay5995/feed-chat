@@ -1,9 +1,10 @@
 import { ChatVectorDBQAChain } from "langchain/chains"
-import { CheerioWebBaseLoader } from "langchain/document_loaders"
 import { type VectorStore } from "langchain/vectorstores"
 
+import { CustomWebLoader } from "./loader"
 import getModel from "./model"
 import { hnswStore, supabaseVectorStore } from "./stores"
+import { splitDocsIntoChunks } from "./utils"
 
 const maxTokens = Number(process.env.OPENAI_MAX_TOKENS) || 100
 
@@ -14,9 +15,11 @@ const chatChainFromUrl = async (
 ) => {
   const model = getModel(maxTokens)
 
-  const loader = new CheerioWebBaseLoader(url)
+  const loader = new CustomWebLoader(url)
 
-  const docs = await loader.load()
+  const rawDocs = await loader.load()
+
+  const docs = await splitDocsIntoChunks(rawDocs)
 
   let vectorStore: VectorStore
 

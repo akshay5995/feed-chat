@@ -24,6 +24,7 @@ RSS_DOMAIN=yourdomain.com
 RSS_PATH=rss.xml # without leading slash
 OPENAI_API_KEY=your-open-ai-api-key
 OPENAI_MAX_TOKENS=number-of-tokens
+CONTENT_X_PATH=article # Optional default is article tag
 # Optional
 OPENAPI_ORG=your-openapi-org
 ```

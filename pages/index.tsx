@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from "react"
+import { useState } from "react"
 import { InferGetServerSidePropsType } from "next"
 import Head from "next/head"
 import logger from "@/logger"
@@ -10,7 +10,6 @@ import { Icons } from "@/components/icons"
 import { Layout } from "@/components/layout"
 import { SideBar } from "@/components/side-bar"
 import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
 import {
   Select,
   SelectContent,
