@@ -1,3 +1,4 @@
+import logger from "@/logger"
 import type { CheerioAPI, load as LoadT } from "cheerio"
 import { Document } from "langchain/document"
 import {
@@ -29,12 +30,7 @@ export class CustomWebLoader
   async load(): Promise<Document[]> {
     const $ = await this.scrape()
 
-    const content = $(CONTENT_X_PATH)
-      .clone()
-      .find("div.elementor, style")
-      .remove()
-      .end()
-      .text()
+    const content = $(CONTENT_X_PATH).clone().text()
 
     const cleanedContent = content.replace(/\s+/g, " ").trim()
 
@@ -52,7 +48,7 @@ export class CustomWebLoader
       const { load } = await import("cheerio")
       return { load }
     } catch (e) {
-      console.error(e)
+      logger.error(e)
       throw new Error(
         "Please install cheerio as a dependency with, e.g. `yarn add cheerio`"
       )

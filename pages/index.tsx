@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { InferGetServerSidePropsType } from "next"
 import Head from "next/head"
 import logger from "@/logger"
@@ -71,6 +71,8 @@ export default function IndexPage({
   const [chatMessages, setChatMessages] = useState(messages)
   const [isLoading, setIsLoading] = useState(false)
 
+  const messagesEnd = React.useRef(null)
+
   const handleBlogChange = (data: FeedEntry) => {
     setBlog(data.id)
     setChatMessages([])
@@ -130,6 +132,14 @@ export default function IndexPage({
     }
     setIsLoading(false)
   }
+
+  const scrollToBottom = () => {
+    messagesEnd.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [chatMessages])
 
   return (
     <Layout>
@@ -227,6 +237,10 @@ export default function IndexPage({
                   )
                 }
               })}
+              <div
+                style={{ float: "left", clear: "both" }}
+                ref={messagesEnd}
+              ></div>
             </ScrollArea>
             <div className="my-2 h-[10px] animate-pulse text-sm text-slate-500">
               {isLoading && "Bot is typing..."}
